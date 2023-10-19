@@ -278,7 +278,10 @@ private extension InitializerDeclSyntax {
         let decoder: TokenSyntax = "decoder"
         let param = FunctionParameterSyntax(
             firstName: "from", secondName: decoder,
-            type: IdentifierTypeSyntax(name: "any Decoder")
+            type: SomeOrAnyTypeSyntax(
+              someOrAnySpecifier: .keyword(.any),
+              constraint: IdentifierTypeSyntax(name: "Decoder")
+            )
         )
 
         let signature = FunctionSignatureSyntax(
@@ -317,7 +320,10 @@ private extension FunctionDeclSyntax {
         let encoder: TokenSyntax = "encoder"
         let param = FunctionParameterSyntax(
             firstName: "to", secondName: encoder,
-            type: IdentifierTypeSyntax(name: "any Encoder")
+            type: SomeOrAnyTypeSyntax(
+              someOrAnySpecifier: .keyword(.any),
+              constraint: IdentifierTypeSyntax(name: "Encoder")
+            )
         )
 
         let signature = FunctionSignatureSyntax(
